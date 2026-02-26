@@ -9,8 +9,8 @@ const HomeLogin = () => {
   const [error, setError] = useState("");
 
   // Hardcoded admin credentials
-  const ADMIN_USERNAME = "admin";
-  const ADMIN_PASSWORD = "admin123";
+  const ADMIN_USERNAME = "captain";
+  const ADMIN_PASSWORD = "captain123";
 
   const handleLogin = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
