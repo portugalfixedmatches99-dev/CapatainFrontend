@@ -22,7 +22,7 @@ const limits: LimitOption[] = [
   { amount: 55000, fee: 8000 },
    { amount: 60000, fee: 9000 },
     { amount: 65000, fee: 10000 },
-     { amount: 70000, fee: 120000 },
+     { amount: 70000, fee: 12000 },
       { amount: 75000, fee: 15000 },
 ];
 
