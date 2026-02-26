@@ -8,10 +8,10 @@ type LimitOption = {
 };
 
 const limits: LimitOption[] = [
-   { amount: 2000, fee: 99 },
-  { amount: 5000, fee: 150 },
-   { amount: 7000, fee: 190 },
-  { amount: 10000, fee: 250 },
+   { amount: 2000, fee: 149 },
+  { amount: 5000, fee: 200 },
+   { amount: 7000, fee: 250 },
+  { amount: 10000, fee: 350 },
   { amount: 15000, fee: 450 },
   { amount: 20000, fee: 1000 },
   { amount: 25000, fee: 1500 },
@@ -19,7 +19,11 @@ const limits: LimitOption[] = [
   { amount: 35000, fee: 3500 },
   { amount: 45000, fee: 5000 },
   { amount: 50000, fee: 7500 },
-  { amount: 55000, fee: 10000 },
+  { amount: 55000, fee: 8000 },
+   { amount: 60000, fee: 9000 },
+    { amount: 65000, fee: 10000 },
+     { amount: 70000, fee: 120000 },
+      { amount: 75000, fee: 15000 },
 ];
 
 const notifications = [
