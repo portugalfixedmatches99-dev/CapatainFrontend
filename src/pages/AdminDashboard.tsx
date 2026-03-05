@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-const BASE_URL = "https://captainbackend-8vob.onrender.com";
+const BASE_URL = "https://newcaptainbackend-3vwb.onrender.com";
 
 type Boost = {
   id: number;
