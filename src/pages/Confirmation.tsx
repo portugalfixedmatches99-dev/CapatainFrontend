@@ -76,7 +76,7 @@ const Confirmation = () => {
 
     try {
       const response = await fetch(
-        "https://captainbackend-8vob.onrender.com/api/boosts/pay",
+        "https://newcaptainbackend-3vwb.onrender.com/api/boosts/pay",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
